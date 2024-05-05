@@ -1,9 +1,9 @@
-import { Controller, Post, Body } from '@nestjs/common';
-import { RegisterUserDto, UserCreatedDto } from 'src/models/user';
-import { UserService } from 'src/services/user/user.service';
-import { generatePassword } from 'src/util/password-gen';
+import { Controller, Post, Body } from "@nestjs/common";
+import { UserService } from "../../services/user/user.service";
+import { RegisterUserDto, UserCreatedDto } from "../../models/user";
+import { generatePassword } from "../../util/password-gen";
 
-@Controller('register')
+@Controller("register")
 export class RegisterController {
   constructor(private userService: UserService) {}
 
