@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 import { generatePassword } from './password-gen';
 
 describe('generatePassword', () => {
