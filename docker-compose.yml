@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 services:
   db:
@@ -12,3 +12,11 @@ services:
       MONGODB_REPLICA_SET_MODE: primary
       MONGODB_REPLICA_SET_KEY: 123456
       MONGODB_DATABASE: nodechallenge
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: nodechallenge
+      MONGO_REPLICA_HOST: host.docker.internal
+
+networks:
+  my-network:
+    external: true
