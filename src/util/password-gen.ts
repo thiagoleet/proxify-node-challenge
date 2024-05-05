@@ -1,3 +1,10 @@
+/**
+ * Generates a random password of a given length
+ *
+ * @export
+ * @param {number} passwordLength Password length
+ * @return {*}  {string}
+ */
 export function generatePassword(passwordLength: number): string {
   const characters =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
