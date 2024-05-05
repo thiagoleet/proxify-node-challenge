@@ -4,7 +4,7 @@ import { HistoryController } from './controllers/history/history.controller';
 import { StatsController } from './controllers/stats/stats.controller';
 import { StockController } from './controllers/stock/stock.controller';
 import { RegisterController } from './controllers/register/register.controller';
-import { UserService } from './user/user.service';
+import { UserService } from './services/user/user.service';
 
 @Module({
   imports: [PrismaModule],
