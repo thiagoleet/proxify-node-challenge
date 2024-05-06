@@ -20,4 +20,13 @@ export class UserService {
       password: userCreated.password,
     } as UserCreatedDto;
   }
+
+  async login(email: string, password: string) {
+    return await this.prismaService.user.findUnique({
+      where: {
+        email,
+        password,
+      },
+    });
+  }
 }
