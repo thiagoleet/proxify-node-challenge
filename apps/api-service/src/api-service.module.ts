@@ -13,7 +13,8 @@ import { HttpModule } from "@nestjs/axios";
 
 import { StatService } from "./services/stat/stat.service";
 import { StatMiddleware } from "./middlewares/stat.middleware";
-import { AuthService } from './services/auth/auth.service';
+import { AuthService } from "./services/auth/auth.service";
+import { HistoryService } from "./services/history/history.service";
 
 @Module({
   imports: [
@@ -32,7 +33,13 @@ import { AuthService } from './services/auth/auth.service';
     StockController,
     LoginController,
   ],
-  providers: [UserService, StockService, StatService, AuthService],
+  providers: [
+    UserService,
+    StockService,
+    StatService,
+    AuthService,
+    HistoryService,
+  ],
 })
 export class ApiServiceModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
