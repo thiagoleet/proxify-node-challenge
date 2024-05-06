@@ -1,8 +1,8 @@
-import { NestFactory } from '@nestjs/core';
-import { StockServiceModule } from './stock-service.module';
+import { NestFactory } from "@nestjs/core";
+import { StockServiceModule } from "./stock-service.module";
 
 async function bootstrap() {
   const app = await NestFactory.create(StockServiceModule);
-  await app.listen(3000);
+  await app.listen(3002);
 }
 bootstrap();

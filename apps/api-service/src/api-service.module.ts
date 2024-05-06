@@ -7,7 +7,7 @@ import { StockController } from "./controllers/stock/stock.controller";
 import { UserService } from "./services/user/user.service";
 import { LoginController } from "./controllers/login/login.controller";
 import { JwtModule } from "@nestjs/jwt";
-import { jwtConstants } from "./util/constants";
+import { jwtConstants } from "./auth/constants";
 
 @Module({
   imports: [
