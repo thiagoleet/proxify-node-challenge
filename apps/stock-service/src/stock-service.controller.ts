@@ -1,12 +1,17 @@
-import { Controller, Get } from '@nestjs/common';
-import { StockServiceService } from './stock-service.service';
+import { Controller, Get, Query } from "@nestjs/common";
+import { StockServiceService } from "./stock-service.service";
+import { firstValueFrom } from "rxjs";
 
-@Controller()
+@Controller("stocks")
 export class StockServiceController {
   constructor(private readonly stockServiceService: StockServiceService) {}
 
   @Get()
-  getHello(): string {
-    return this.stockServiceService.getHello();
+  async getStocks(@Query() query) {
+    const response = await firstValueFrom(
+      this.stockServiceService.getStocks(query.stock)
+    );
+
+    return response.data;
   }
 }
