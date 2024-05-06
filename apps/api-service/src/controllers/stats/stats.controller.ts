@@ -1,12 +1,30 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Request, UseGuards } from "@nestjs/common";
+import { StatService } from "../../services/stat/stat.service";
+import { AuthGuard } from "../../auth/auth.guard";
+import { extractTokenFromHeader } from "../../auth/helpers";
+import { AuthService } from "../../services/auth/auth.service";
+import { from, map } from "rxjs";
 
-@Controller('stats')
+@Controller("stats")
 export class StatsController {
+  constructor(
+    private statService: StatService,
+    private authService: AuthService
+  ) {}
+
+  @UseGuards(AuthGuard)
   @Get()
-  getStats() {
-    return [
-      { stock: 'aapl.us', times_requested: 5 },
-      { stock: 'msft.us', times_requested: 2 },
-    ];
+  async getStats(@Request() req) {
+    const token = extractTokenFromHeader(req);
+    const user = await this.authService.getUserFromToken(token);
+
+    return from(this.statService.getStats(user.id)).pipe(
+      map((stats) =>
+        stats.map((stat) => ({
+          stock: stat.stock,
+          timesRequested: stat.times_requested,
+        }))
+      )
+    );
   }
 }

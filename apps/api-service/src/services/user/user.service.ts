@@ -21,11 +21,10 @@ export class UserService {
     } as UserCreatedDto;
   }
 
-  async login(email: string, password: string) {
+  async findById(id: string) {
     return await this.prismaService.user.findUnique({
       where: {
-        email,
-        password,
+        id,
       },
     });
   }
